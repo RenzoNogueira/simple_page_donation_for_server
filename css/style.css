@@ -30,7 +30,7 @@ main .main-div {
     min-height: 200px!important; /* min-height of wallpaper */
 }
 #wallpaper-left {
-    background-image: url("../images/wallpaper-minecraft-1.png");
+    background-image: url("../images/wallpaper-minecraft-1.webp");
     background-repeat: repeat-y;
     background-position: center;
     height: 100%;
