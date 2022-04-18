@@ -88,16 +88,16 @@ main .main-div {
 #emerald {
     width: 1em;
 }
-#minecraft-chest:hover {
+.minecraft-chest:hover {
     animation-play-state: paused;
 }
-#minecraft-chest{
+.minecraft-chest{
     width: 1em;
     height: 1em;
     box-shadow: 2px 10px 20px black;
 }
 
-#minecraft-chest.animated.shake{
+.minecraft-chest.animated.shake{
     animation: shake 8s infinite;
 }
 
