@@ -27,22 +27,14 @@
                         <img id="minecraft-pickaxe" src="images/pickaxe.webp" alt="Minecraft Icon" class="img-fluid">
                         <!-- Icone de baú desktop -->
                         <div style="top: 280px;" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Total de doações da rodada." class="d-flex align-items-center position-absolute text-light start-50 translate-middle">
-<<<<<<< HEAD
                             <img id="minecraft-chest-desktop" src="images/chest.webp" alt="Minecraft chest" class="img-fluid">
-=======
-                            <img src="images/chest.webp" alt="Minecraft chest" class="img-fluid minecraft-chest">
->>>>>>> 30fb4054ec2f7b7035853bb69cc2f1cadfb6ab04
                             <h1 class="px-4" style="transform: translateY(0.2em);">R${{totalSavings}}</h1>
                         </div>
                     </div>
                 </div>
                 <!-- Icone de baú mobile -->
                 <div role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Total de doações da rodada." class="d-flex align-items-center position-absolute text-light top-50 start-50 translate-middle d-block d-md-none wallpaper-left-text">
-<<<<<<< HEAD
                     <img id="minecraft-chest-mobile" src="images/chest.webp" alt="Minecraft chest" class="img-fluid">
-=======
-                    <img src="images/chest.webp" alt="Minecraft chest" class="img-fluid minecraft-chest">
->>>>>>> 30fb4054ec2f7b7035853bb69cc2f1cadfb6ab04
                     <h1 class="px-4" style="transform: translateY(0.2em);">R${{totalSavings}}</h1>
                 </div>
             </div>
@@ -150,19 +142,11 @@
                     setInterval(() => {
                         tickets++
                         if (tickets >= 8) {
-<<<<<<< HEAD
                             $('#minecraft-chest-desktop, #minecraft-chest-mobile').addClass('animated shake');
                         }
                         setTimeout(() => {
                             if (tickets >= 16) {
                                 $('#minecraft-chest-desktop, #minecraft-chest-mobile').removeClass('animated shake');
-=======
-                            $('.minecraft-chest').addClass('animated shake');
-                        }
-                        setTimeout(() => {
-                            if (tickets >= 16) {
-                                $('.minecraft-chest').removeClass('animated shake');
->>>>>>> 30fb4054ec2f7b7035853bb69cc2f1cadfb6ab04
                                 tickets = 0
                             }
                         }, 8000);
