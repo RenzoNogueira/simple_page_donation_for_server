@@ -9,6 +9,8 @@
     <!-- Bootstrap 5 css -->
     <link rel="stylesheet" href="framework/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="framework/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/274af9ab8f.js" crossorigin="anonymous" defer></script>
 </head>
 
 <body>
@@ -25,26 +27,27 @@
                         <img id="minecraft-pickaxe" src="images/pickaxe.webp" alt="Minecraft Icon" class="img-fluid">
                         <!-- Icone de baú desktop -->
                         <div style="top: 280px;" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Total de doações da rodada." class="d-flex align-items-center position-absolute text-light start-50 translate-middle">
-                            <img id="minecraft-chest" src="images/chest.webp" alt="Minecraft chest" class="img-fluid">
+                            <img id="minecraft-chest-desktop" src="images/chest.webp" alt="Minecraft chest" class="img-fluid">
                             <h1 class="px-4" style="transform: translateY(0.2em);">R${{totalSavings}}</h1>
                         </div>
                     </div>
                 </div>
                 <!-- Icone de baú mobile -->
                 <div role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Total de doações da rodada." class="d-flex align-items-center position-absolute text-light top-50 start-50 translate-middle d-block d-md-none wallpaper-left-text">
-                    <img id="minecraft-chest" src="images/chest.webp" alt="Minecraft chest" class="img-fluid">
+                    <img id="minecraft-chest-mobile" src="images/chest.webp" alt="Minecraft chest" class="img-fluid">
                     <h1 class="px-4" style="transform: translateY(0.2em);">R${{totalSavings}}</h1>
                 </div>
             </div>
-            <!-- Formulário -->
-            <div class="col-md-6 col-lg-6 py-4 p-md-0">
+
+            <!-- Formulário do usuário -->
+            <div v-show="currentPage == 0" class="page-donation col-md-6 col-lg-6 py-4 p-md-0">
                 <div class="container pt-4">
                     <div>
                         <h1 class="text-uppercase">Em busca de diamantes</h1>
                         <h2 class="text-center">Ajude a manter o servidor.</h2>
                         <div class="d-flex align-items-center">
-                            <img id="emerald" src="images/emerald.webp" alt="Smerald" class="img-fluid">
-                            <h4 style="transform: translateY(0.2em);" class="mx-3">Preencha o formulário abaixo para efetuar a doação.</h4>
+                            <img id="emerald-page-0" src="images/emerald.webp" alt="Smerald" class="img-fluid">
+                            <h4 class="mx-3 title-info">Preencha o formulário abaixo para efetuar a doação.</h4>
                         </div>
                         <div class="container">
                             <!-- Formulário simples de identificação -->
@@ -66,14 +69,35 @@
                                     <textarea name="message" id="message" class="form-control" placeholder="Que tal uma mensagem?" required></textarea>
                                 </div>
                                 <div class="form-group mt-4">
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <a @click="changePage(1)" href="#" class="btn btn-link fs-4">Próximo <i class="fas fa-arrow-right fs-6 ml-2"></i></a>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Escolher valores -->
+            <div v-show="currentPage == 1" class="page-donation col-md-6 col-lg-6 py-4 p-md-0">
+                <div class="container pt-4">
+                    <div>
+                        <h1 class="text-uppercase">Em busca de diamantes</h1>
+                        <a @click="changePage(0)" href="#" class="btn btn-link fs-4"><i class="fas fa-arrow-left fs-6 mr-2"></i> Voltar</a>
+                        <h2 class="text-center">Ajude a manter o servidor.</h2>
+                        <div class="d-flex align-items-center">
+                            <img id="emerald-page-1" src="images/emerald.webp" alt="Smerald" class="img-fluid">
+                            <h4 class="mx-3 title-info">Escolha um valor para doação:</h4>
+                        </div>
+                        <div class="container">
+                            <div class="d-flex justify-content-center align-items-center mt-4">
+                                <!-- Lista de botões para selecionar um valor -->
+                                <button v-for="v in valores" @click="changeValue(v)" class="btn btn-lg mx-2" :class=" {'btn-primary': v == valSelected,'btn-outline-secondary': v != valSelected}">R${{v}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Rodapé mobile -->
             <div class="col-12 position-relative d-block d-md-none">
                 <div class="position-absolute top-50 start-50 translate-middle wallpaper-footer-text" id="wallpaper-footer-text">
@@ -86,14 +110,17 @@
             </div>
         </div>
     </main>
-    <script src="framework/jquery/jquery-3.6.0.min.js"></script>
-    <script src="framework/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <script>
+    <script src="framework/jquery/jquery-3.6.0.min.js"></script>
+    <script defer>
         const app = new Vue({
             el: '#app',
             data: {
-                totalSavings: 0
+                totalSavings: 0,
+                currentPage: 1,
+                valores: [10, 20, 40,60],
+                valSelected: 0
             },
             methods: {
                 getTotalSavings() {
@@ -103,18 +130,23 @@
                         this.totalSavings = response.totalSavings
                     })
                 },
-
+                changePage: function(page) {
+                    this.currentPage = page
+                },
+                changeValue: function(valor) {
+                    this.valSelected = valor
+                },
                 // Anima o icone do baú
                 animateChest: function() {
                     let tickets = 0
                     setInterval(() => {
                         tickets++
                         if (tickets >= 8) {
-                            $('#minecraft-chest').addClass('animated shake');
+                            $('#minecraft-chest-desktop, #minecraft-chest-mobile').addClass('animated shake');
                         }
                         setTimeout(() => {
                             if (tickets >= 16) {
-                                $('#minecraft-chest').removeClass('animated shake');
+                                $('#minecraft-chest-desktop, #minecraft-chest-mobile').removeClass('animated shake');
                                 tickets = 0
                             }
                         }, 8000);
@@ -127,8 +159,7 @@
             }
         });
     </script>
-
-    <script>
+    <script defer>
         $(document).ready(function() {
             $('[data-bs-toggle="tooltip"]').tooltip(); // Inicia o tooltip
         });
