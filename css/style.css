@@ -30,9 +30,8 @@ main .main-div {
 }
 
 #container-wallpaper-left {
-    /* container for wallpaper */
     min-height: 200px!important;
-    /* min-height of wallpaper */
+    z-index: 1;
 }
 
 #wallpaper-left {
@@ -58,7 +57,7 @@ main .main-div {
 }
 
 .wallpaper-left-text h1,
-.wallpaper-footer-text h1 {
+.wallpaper-footer-text h1, .btn-values {
     font-family: var(--passion-one), sans-serif !important;
 }
 
@@ -125,8 +124,11 @@ main .main-div {
     transform: translateY(0.2em);
 }
 
-.page-donation {
-    animation: emerge 0.5s ease-in-out;
+.page-donation-0 {
+    animation: emerge-left 0.5s ease-in-out;
+}
+.page-donation-1 {
+    animation: emerge-rigth 0.5s ease-in-out;
 }
 
 
@@ -202,12 +204,25 @@ main .main-div {
 }
 
 /* Animação de surgir pela a direira */
-@keyframes emerge {
+@keyframes emerge-rigth {
     0% {
         transform: translateX(100%);
+        opacity: 0.2;
     }
     
     100% {
         transform: translateX(0%);
+        opacity: 1;
+    }
+}
+@keyframes emerge-left {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
     }
 }

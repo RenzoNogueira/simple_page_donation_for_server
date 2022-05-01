@@ -40,7 +40,7 @@
             </div>
 
             <!-- Formulário do usuário -->
-            <div v-show="currentPage == 0" class="page-donation col-md-6 col-lg-6 py-4 p-md-0">
+            <div v-show="currentPage == 0" class="page-donation-0 col-md-6 col-lg-6 py-4 p-md-0">
                 <div class="container pt-4">
                     <div>
                         <h1 class="text-uppercase">Em busca de diamantes</h1>
@@ -78,7 +78,7 @@
             </div>
 
             <!-- Escolher valores -->
-            <div v-show="currentPage == 1" class="page-donation col-md-6 col-lg-6 py-4 p-md-0">
+            <div v-show="currentPage == 1" class="page-donation-1 col-md-6 col-lg-6 py-4 p-md-0">
                 <div class="container pt-4">
                     <div>
                         <h1 class="text-uppercase">Em busca de diamantes</h1>
@@ -89,9 +89,13 @@
                             <h4 class="mx-3 title-info">Escolha um valor para doação:</h4>
                         </div>
                         <div class="container">
-                            <div class="d-flex justify-content-center align-items-center mt-4">
+                            <div class="d-flex justify-content-center align-items-center mt-4" data-bs-toggle="tooltip" data-bs-placement="top" title="Selecione um valor">
                                 <!-- Lista de botões para selecionar um valor -->
-                                <button v-for="v in valores" @click="changeValue(v)" class="btn btn-lg mx-2" :class=" {'btn-primary': v == valSelected,'btn-outline-secondary': v != valSelected}">R${{v}}</button>
+                                <button v-for="v in valores" @click="changeValue(v)" class="mb-5 btn btn-values btn-lg mx-2" :class=" {'btn-success': v == valSelected,'btn-outline-secondary': v != valSelected}">R${{v}}</button>
+                            </div>
+                            <div class="position-relative mt-5">
+                                <!-- Botão de prosseguir -->
+                                <button @click="donate" :disabled="valSelected == 0" class="btn btn-primary btn-lg btn-block position-absolute top-100 start-50  translate-middle">Prosseguir</button>
                             </div>
                         </div>
                     </div>
@@ -99,7 +103,7 @@
             </div>
 
             <!-- Rodapé mobile -->
-            <div class="col-12 position-relative d-block d-md-none">
+            <div class="col-12 mt-5 position-relative d-block d-md-none">
                 <div class="position-absolute top-50 start-50 translate-middle wallpaper-footer-text" id="wallpaper-footer-text">
                     <div class="position-relative mb-4">
                         <img id="minecraft-pickaxe-footer" src="images/pickaxe.webp" alt="Minecraft Icon" class="img-fluid">
@@ -119,7 +123,7 @@
             data: {
                 totalSavings: 0,
                 currentPage: 1,
-                valores: [10, 20, 40,60],
+                valores: [10, 20, 40, 60],
                 valSelected: 0
             },
             methods: {
@@ -135,6 +139,16 @@
                 },
                 changeValue: function(valor) {
                     this.valSelected = valor
+                },
+                donate: function() {
+                    // $.post('api/donate.php', {
+                    //     action: 'donate',
+                    //     valor: this.valSelected
+                    // }, (response) => {
+                    //     if (response.success) {
+                    //         this.currentPage = 2
+                    //     }
+                    // })
                 },
                 // Anima o icone do baú
                 animateChest: function() {
