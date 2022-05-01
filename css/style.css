@@ -103,6 +103,7 @@ main .main-div {
 #emerald-page-1 {
     width: 1em;
 }
+<<<<<<< HEAD
 
 #minecraft-chest-desktop:hover,
 #minecraft-chest-mobile:hover {
@@ -111,13 +112,23 @@ main .main-div {
 
 #minecraft-chest-desktop,
 #minecraft-chest-mobile {
+=======
+.minecraft-chest:hover {
+    animation-play-state: paused;
+}
+.minecraft-chest{
+>>>>>>> 30fb4054ec2f7b7035853bb69cc2f1cadfb6ab04
     width: 1em;
     height: 1em;
     box-shadow: 2px 10px 20px black;
 }
 
+<<<<<<< HEAD
 #minecraft-chest-desktop.animated.shake,
 #minecraft-chest-mobile.animated.shake {
+=======
+.minecraft-chest.animated.shake{
+>>>>>>> 30fb4054ec2f7b7035853bb69cc2f1cadfb6ab04
     animation: shake 8s infinite;
 }
 
