@@ -5,7 +5,6 @@ session_start();
 header('Content-Type: application/json');
 require_once('payment/stripe/init.php');
 
-var_dump($_POST);
 $valuesKeys = [
   12 => "price_1Kuy80I4YwwPzrij87eeqbTX",
   22 => "price_1Kuy8GI4YwwPzrijj5TN4UZM",
