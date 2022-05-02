@@ -57,8 +57,8 @@
                                     <input v-model="user.name" type="text" name="name" id="name" class="form-control" placeholder="Digite seu nome" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Nick-name</label>
-                                    <input v-model="user.nikename" type="text" name="nikename" id="nikename" class="form-control" placeholder="Digite seu Nike-name do jogo" required>
+                                    <label for="nickname">Nick-name</label>
+                                    <input v-model="user.nickname" type="text" name="nickname" id="nickname" class="form-control" placeholder="Digite seu Nick-name do jogo" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-mail</label>
@@ -70,7 +70,7 @@
                                 </div>
                                 <div>
                                     <!-- input disabilitadado e invisivel tipo numérico com o v-model valSelected -->
-                                    <input v-model="valSelected" type="number" name="amount" id="valSelected" class="d-none" required>
+                                    <input placeholder="valSelected" v-model="valSelected" type="number" name="amount" id="valSelected" class="d-none" required>
 
                                 </div>
                                 <div class="form-group mt-4">
@@ -127,12 +127,12 @@
             el: '#app',
             data: {
                 totalSavings: 0,
-                currentPage: 1,
-                valores: [10, 20, 40, 60],
+                currentPage: 0,
+                valores: [12, 22, 40, 60],
                 valSelected: 0,
                 user: {
                     name: "",
-                    nikename: "",
+                    nickname: "",
                     email: "",
                     message: ""
                 }
@@ -154,19 +154,6 @@
                 donate: function() {
                     // Envia o formulário para api/donate.php
                     $('form').submit()
-
-                    // $.post('api/donate.php', {
-                    //     action: 'donate',
-                    //     data: {
-                    //         valor: this.valSelected,
-                    //         user: btoa(JSON.stringify(this.user))
-                    //     }
-                    // }, (response) => {
-                    //     if (response.success) {
-                    //         this.currentPage = 2
-                    //     }
-                    //     console.log(response)
-                    // })
                 },
                 // Anima o icone do baú
                 animateChest: function() {
