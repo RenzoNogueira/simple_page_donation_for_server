@@ -26,14 +26,14 @@
                     <div class="position-relative">
                         <img id="minecraft-pickaxe" src="images/pickaxe.webp" alt="Minecraft Icon" class="img-fluid">
                         <!-- Icone de baú desktop -->
-                        <div data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="top: 280px;" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Total de doações da rodada." class="d-flex align-items-center position-absolute text-light start-50 translate-middle">
+                        <div data-bs-toggle="modal" data-bs-target="#modalTargetValue" style="top: 280px;" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Total de doações da rodada." class="d-flex align-items-center position-absolute text-light start-50 translate-middle">
                             <img id="minecraft-chest-desktop" src="images/chest.webp" alt="Minecraft chest" class="img-fluid">
                             <h1 class="px-4" style="transform: translateY(0.2em);">R${{totalSavings}}</h1>
                         </div>
                     </div>
                 </div>
                 <!-- Icone de baú mobile -->
-                <div data-bs-toggle="modal" data-bs-target="#staticBackdrop" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Total de doações da rodada." class="d-flex align-items-center position-absolute text-light top-50 start-50 translate-middle d-block d-md-none wallpaper-left-text">
+                <div data-bs-toggle="modal" data-bs-target="#modalTargetValue" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Total de doações da rodada." class="d-flex align-items-center position-absolute text-light top-50 start-50 translate-middle d-block d-md-none wallpaper-left-text">
                     <img id="minecraft-chest-mobile" src="images/chest.webp" alt="Minecraft chest" class="img-fluid">
                     <h1 class="px-4" style="transform: translateY(0.2em);">R${{totalSavings}}</h1>
                 </div>
@@ -120,17 +120,17 @@
         </div>
 
         <!-- Modal progresso -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="modalTargetValue" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalTargetValueLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <h5 class="modal-title" id="modalTargetValueLabel">Modal title</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p><b>Meta:</b>R${{targetValue.target_value}}</p>
+                        <p class="money"><b class="px-2">Meta:</b> R${{targetValue.target_value}}</p>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">{{targetValue.target_value}}</div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">{{targetValue.target_value}} %</div>
                         </div>
                     </div>
                     <div class="modal-footer">

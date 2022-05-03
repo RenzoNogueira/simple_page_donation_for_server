@@ -57,7 +57,9 @@ main .main-div {
 }
 
 .wallpaper-left-text h1,
-.wallpaper-footer-text h1, .btn-values {
+.wallpaper-footer-text h1,
+.btn-values,
+.money {
     font-family: var(--passion-one), sans-serif !important;
 }
 
